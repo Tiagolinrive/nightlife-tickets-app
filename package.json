@@ -1,0 +1,14 @@
+{
+  "name": "nightlife-market-mvp",
+  "version": "1.0.0",
+  "description": "MVP para marketplace de entradas de boliches con panel del boliche y compra de tickets",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NightMarket | Entradas para boliches</title>
+    <meta name="description" content="Marketplace de entradas para boliches. Compra entradas, descubre eventos y vende con la app." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">N</div>
+          <div>
+            <div class="brand-name">NightMarket</div>
+            <div class="brand-sub">Entradas para boliches</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#featured">Explorar</a>
+          <a href="#clubs">Boliches</a>
+          <a href="#how">Cómo funciona</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="/club-dashboard.html" class="ghost-btn">Soy boliche</a>
+          <button class="primary-btn" id="goBuying">Comprar ahora</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="pill">Marketplace de nightlife</div>
+            <h1>La app donde los boliches venden entradas y la gente compra sin vueltas.</h1>
+            <p>
+              Unificamos eventos, promociones, tickets digitales y gestión de ventas para boliches en una sola plataforma.
+            </p>
+            <div class="cta-row">
+              <button class="primary-btn" id="hero-primary">Ver eventos</button>
+              <a href="/club-dashboard.html" class="secondary-btn">Registrar mi boliche</a>
+            </div>
+            <div class="stats">
+              <div>
+                <strong>1.2k+</strong>
+                <span>eventos activos</span>
+              </div>
+              <div>
+                <strong>28%</strong>
+                <span>más conversion</span>
+              </div>
+              <div>
+                <strong>12%</strong>
+                <span>comisión de plataforma</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="visual-card featured-card">
+              <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80" alt="Evento de boliche" />
+              <div class="card-meta">
+                <span>Tonight</span>
+                <strong>Neon Arena</strong>
+              </div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">✓</div>
+              <div>
+                <strong>QR de ingreso</strong>
+                <span>Validación instantánea</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="filters-bar" id="featured">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Eventos</span>
+              <h2>Descubrí lo que pasa esta noche</h2>
+            </div>
+            <div class="search-box">
+              <span>🔎</span>
+              <input id="searchInput" type="text" placeholder="Buscar boliche o evento" />
+            </div>
+          </div>
+
+          <div class="chip-row" id="genreFilters">
+            <button class="chip active" data-filter="all">Todos</button>
+            <button class="chip" data-filter="House">House</button>
+            <button class="chip" data-filter="Electro">Electro</button>
+            <button class="chip" data-filter="Latina">Latina</button>
+            <button class="chip" data-filter="Lounge">Lounge</button>
+          </div>
+        </section>
+
+        <section class="card-grid" id="eventsGrid"></section>
+
+        <section class="clubs-section" id="clubs">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Boliches</span>
+              <h2>Los mejores lugares en tu ciudad</h2>
+            </div>
+          </div>
+          <div class="clubs-grid" id="clubsGrid"></div>
+        </section>
+
+        <section class="how-it-works" id="how">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Cómo funciona</span>
+              <h2>Todo en una sola plataforma</h2>
+            </div>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-index">01</div>
+              <h3>Boliches se registran</h3>
+              <p>Suben su venue, eventos y stock de entradas con pocos pasos.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-index">02</div>
+              <h3>Los clientes compran</h3>
+              <p>Buscan por ciudad, música y categoría y pagan online.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-index">03</div>
+              <h3>Ingreso con QR</h3>
+              <p>El boliche valida la entrada en la puerta y la app liquida automáticamente.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal hidden" id="eventModal">
+      <div class="modal-backdrop" data-close="eventModal"></div>
+      <div class="modal-panel">
+        <button class="close-btn" data-close="eventModal">×</button>
+        <div class="modal-cover-wrap">
+          <img id="modalImage" src="" alt="Evento" />
+        </div>
+        <div class="modal-body">
+          <span id="modalBadge" class="mini-badge">House</span>
+          <h3 id="modalTitle">Titulo</h3>
+          <div class="info-row">
+            <span id="modalClub">Boliche</span>
+            <span id="modalDate">Fecha</span>
+          </div>
+          <p id="modalDescription" class="modal-description"></p>
+
+          <div class="detail-tile-grid">
+            <div>
+              <span>Ubicación</span>
+              <strong id="modalLocation">Córdoba</strong>
+            </div>
+            <div>
+              <span>Entradas</span>
+              <strong id="modalAvailable">Disponible</strong>
+            </div>
+          </div>
+
+          <div class="purchase-box">
+            <div>
+              <span>Precio</span>
+              <strong id="modalPrice">$0</strong>
+            </div>
+            <div class="qty-control">
+              <button id="minusQty">−</button>
+              <span id="qtyValue">1</span>
+              <button id="plusQty">+</button>
+            </div>
+          </div>
+
+          <button class="primary-btn full-width" id="confirmPurchaseBtn">Comprar entradas</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="toast"></div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
